@@ -1,25 +1,151 @@
-BUSAN TRAVEL GUIDE
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap");
 
-Open with VS Code Live Server. This project uses fetch("busan-tours.json"), so JSON may not load by double-clicking index.html.
+:root{
+  --bg:#07111f;
+  --text:#f7f7f7;
+  --muted:rgba(255,255,255,.72);
+  --line:rgba(255,255,255,.24);
+  --card:rgba(255,255,255,.10);
+  --card-strong:rgba(255,255,255,.16);
+  --accent:#7fd8ff;
+  --accent-2:#f7c46c;
+  --shadow:0 24px 80px rgba(0,0,0,.38);
+  --radius:28px;
+}
 
-Checklist included:
-L1 Flexbox navigation
-L2 CSS Grid sections
-L3 Responsive layout with media queries
-L4 Sticky header
-L6 External CSS/JS files and consistent class naming
-U1 Transition hover effects
-U2 Transform hover/zoom effects
-U3 JS Toggle for language, mobile menu, and light/dark mode
-U4 setTimeout status message
-U5 setInterval auto tour highlight
-U6 clearInterval stop button
-U7 Form validation
-D1 fetch API
-D2 async/await
-D3 response.json()
-D4 DOM rendering
-D5 try/catch error handling
-A1 Semantic HTML
-A2 One H1
-A3 Focus-visible accessibility
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,"Noto Sans KR",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+
+.site-header{position:sticky;top:0;z-index:50;background:linear-gradient(to bottom,rgba(5,7,12,.72),rgba(5,7,12,.06));backdrop-filter:blur(12px)}
+.nav{width:min(1180px,calc(100% - 48px));height:78px;margin:0 auto;display:flex;align-items:center;gap:28px}
+.nav__logo{display:flex;align-items:center;gap:8px;margin-right:auto;font-weight:900;letter-spacing:.04em}
+.nav__logo i{width:13px;height:13px;display:inline-block;border:2px solid currentColor;border-radius:50%;position:relative}
+.nav__logo i:after{content:"";position:absolute;left:3px;bottom:-6px;width:5px;height:8px;background:currentColor;clip-path:polygon(50% 100%,0 0,100% 0)}
+.nav__menu{display:flex;align-items:center;gap:42px;list-style:none;margin:0;padding:0;color:var(--muted);font-weight:700;font-size:14px}
+.nav__menu a{position:relative}
+.nav__menu a:after{content:"";position:absolute;left:0;bottom:-9px;width:0;height:2px;background:var(--text);transition:width .3s ease}
+.nav__menu a:hover:after{width:100%}
+.nav__actions{display:flex;gap:10px;margin-left:10px}
+.mode-btn,.small-btn{min-height:38px;padding:0 16px;border:1px solid var(--line);border-radius:999px;color:var(--text);background:rgba(255,255,255,.08);cursor:pointer;transition:transform .3s ease,background .3s ease}
+.mode-btn:hover,.small-btn:hover,.btn:hover{transform:translateY(-3px);background:rgba(255,255,255,.18)}
+.nav__toggle{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:rgba(255,255,255,.08);cursor:pointer}
+.nav__toggle span{display:block;width:18px;height:2px;margin:4px auto;background:var(--text)}
+
+.hero{position:relative;min-height:100vh;margin-top:-78px;display:grid;place-items:center;overflow:hidden}
+.hero__bg{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(5,7,12,.72),rgba(5,7,12,.28)),url("images/hero-busan.png");background-size:cover;background-position:center;transform:scale(1.02);animation:slowZoom 16s ease-in-out infinite alternate}
+@keyframes slowZoom{from{transform:scale(1.02)}to{transform:scale(1.09)}}
+.hero__overlay{position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(127,216,255,.12),transparent 30%),linear-gradient(to bottom,rgba(5,7,12,.14),rgba(5,7,12,.82))}
+.hero__content{position:relative;z-index:2;width:min(1180px,calc(100% - 48px));padding-top:90px;text-align:center}
+.hero__eyebrow{margin:0 auto 12px;width:fit-content;padding:8px 16px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:rgba(255,255,255,.08);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+h1{margin:0;font-size:clamp(88px,19vw,285px);line-height:.78;font-weight:900;letter-spacing:-.09em;color:#fff}
+.hero__copy{width:min(620px,100%);margin:28px auto 0;color:rgba(255,255,255,.82);font-size:clamp(17px,2vw,22px);line-height:1.55;font-weight:600}
+.hero__buttons{margin-top:38px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.btn{min-width:168px;min-height:56px;padding:0 26px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;font-weight:900;text-transform:uppercase;transition:transform .3s ease,background .3s ease,color .3s ease}
+.btn--outline{border:2px solid rgba(255,255,255,.82);color:#fff;background:rgba(255,255,255,.04)}
+.btn--solid{border:0;color:#06101d;background:#fff}
+.hero__side{position:absolute;z-index:2;left:max(28px,calc((100vw - 1180px)/2));bottom:100px;height:150px;display:flex;align-items:center;gap:18px;color:rgba(255,255,255,.72);font-size:11px;font-weight:800;writing-mode:vertical-rl;text-transform:uppercase}
+.hero__side i{width:1px;height:90px;background:rgba(255,255,255,.6)}
+.hero__social{position:absolute;z-index:2;right:max(28px,calc((100vw - 1180px)/2));bottom:78px;display:flex;gap:16px;list-style:none;margin:0;padding:0}
+.hero__social a{width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.32);border-radius:50%;color:#fff;background:rgba(255,255,255,.08)}
+
+.section{width:min(1180px,calc(100% - 48px));margin:0 auto;padding:110px 0 0}
+.section__head{margin-bottom:34px}
+.section__head--row{display:flex;align-items:end;justify-content:space-between;gap:24px}
+.section__label{margin:0 0 12px;color:var(--accent);font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.section h2{margin:0;max-width:860px;font-size:clamp(38px,6vw,78px);line-height:.98;letter-spacing:-.06em}
+
+.intro__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:18px}
+.intro-card{
+  position:relative;
+  min-height:360px;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:#101a29;
+  box-shadow:var(--shadow);
+  transition:transform .3s ease;
+}
+.intro-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  transform:scale(1.04);
+  transition:transform .45s ease;
+}
+.intro-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(5,7,12,.94) 18%,rgba(5,7,12,.52) 48%,rgba(5,7,12,.10) 100%);
+}
+.intro-card:hover,.tour-card:hover{transform:translateY(-8px)}
+.intro-card:hover::before{transform:scale(1.09)}
+.intro-card__content{position:relative;z-index:2;width:100%;padding:28px}
+.intro-card--ocean::before{background-image:url("images/ocean.jpeg")}
+.intro-card--food::before{background-image:url("images/food.jpg")}
+.intro-card--photo::before{background-image:url("images/Photo.png")}
+.intro-card h3,.tour-card h3{margin:0 0 14px;font-size:30px;letter-spacing:-.04em;color:#fff}
+.intro-card p,.tour-card p{margin:0;color:rgba(255,255,255,.86);line-height:1.65;font-weight:600}
+
+.tour-controls{display:flex;gap:10px;flex-wrap:wrap}
+.status{min-height:24px;margin:0 0 18px;color:var(--accent-2);font-weight:800}
+.tour-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tour-card{min-height:430px;display:flex;flex-direction:column;justify-content:end;overflow:hidden;position:relative;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);transition:transform .3s ease,background .3s ease}
+.tour-card.is-active{outline:3px solid var(--accent);transform:translateY(-8px)}
+.tour-card__image{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.04);transition:transform .4s ease}
+.tour-card:hover .tour-card__image{transform:scale(1.1)}
+.tour-card__content{position:relative;z-index:2;padding:28px;background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,.1))}
+.tour-card__tag{display:inline-flex;margin-bottom:14px;padding:7px 12px;border:1px solid rgba(255,255,255,.34);border-radius:999px;color:#fff;background:rgba(255,255,255,.12);font-size:12px;font-weight:900;text-transform:uppercase}
+.tour-card h3,.tour-card p{color:#fff}
+
+.planner{display:grid;grid-template-columns:1fr .9fr;gap:38px;align-items:center;padding-bottom:100px}
+.planner__text{padding:38px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+.planner__text p{margin:0;color:var(--muted);line-height:1.65;font-weight:600}
+.plan-form{padding:30px;display:grid;gap:18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card-strong);box-shadow:var(--shadow)}
+.form-field{display:grid;gap:8px}
+.form-field label{font-weight:900}
+.form-field input,.form-field select{width:100%;min-height:54px;padding:0 16px;border:1px solid var(--line);border-radius:16px;color:var(--text);background:rgba(255,255,255,.08)}
+.form-message{min-height:28px;margin:0;color:var(--accent-2);font-weight:800;line-height:1.5}
+.form-message.is-error{color:#ff7ca8}
+
+.footer{width:min(1180px,calc(100% - 48px));margin:0 auto 40px;padding:22px 0;display:flex;justify-content:space-between;border-top:1px solid var(--line);color:var(--muted);font-weight:800}
+.footer p{margin:0}
+
+@media(max-width:980px){
+  .nav__toggle{display:block;order:3}
+  .nav__actions{margin-left:0}
+  .nav__menu{display:none;order:5;width:100%;padding:18px;flex-direction:column;align-items:flex-start;gap:18px;border:1px solid var(--line);border-radius:20px;background:rgba(5,7,12,.86)}
+  .nav__menu.is-open{display:flex}
+  .nav{height:auto;min-height:78px;flex-wrap:wrap;padding:16px 0}
+  .intro__grid,.tour-grid,.planner{grid-template-columns:1fr 1fr}
+  .intro-card--wide,.planner__text{grid-column:1/-1}
+  .hero__side{display:none}
+}
+
+@media(max-width:640px){
+  .nav,.section,.footer,.hero__content{width:min(100% - 32px,1180px)}
+  .nav__actions{width:100%}
+  .mode-btn{flex:1}
+  h1{font-size:clamp(78px,26vw,130px)}
+  .hero__copy{font-size:16px}
+  .hero__social{right:24px;bottom:32px}
+  .section{padding-top:80px}
+  .section__head--row{align-items:flex-start;flex-direction:column}
+  .intro__grid,.tour-grid,.planner{grid-template-columns:1fr}
+  .tour-card{min-height:360px}
+  .footer{flex-direction:column;gap:12px}
+}
