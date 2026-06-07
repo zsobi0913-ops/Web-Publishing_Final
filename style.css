@@ -96,8 +96,8 @@ h1{margin:0;font-size:clamp(88px,19vw,285px);line-height:.78;font-weight:900;let
 .intro-card:hover::before{transform:scale(1.09)}
 .intro-card__content{position:relative;z-index:2;width:100%;padding:28px}
 .intro-card--ocean::before{background-image:url("images/ocean.jpeg")}
-.intro-card--food::before{background-image:url("images/food.jpg")}
-.intro-card--photo::before{background-image:url("images/Photo.png")}
+.intro-card--food::before{background-image:url("images/food.png")}
+.intro-card--photo::before{background-image:url("images/photo.png")}
 .intro-card h3,.tour-card h3{margin:0 0 14px;font-size:30px;letter-spacing:-.04em;color:#fff}
 .intro-card p,.tour-card p{margin:0;color:rgba(255,255,255,.86);line-height:1.65;font-weight:600}
 
