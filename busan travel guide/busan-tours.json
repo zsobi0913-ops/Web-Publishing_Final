@@ -1,0 +1,41 @@
+[
+  {
+    "image": "images/haeundae.png",
+    "en": {
+      "tag": "Ocean",
+      "title": "Haeundae Beach",
+      "description": "A classic Busan beach for a bright walk, ocean photos, and an easy first stop."
+    },
+    "kr": {
+      "tag": "오션",
+      "title": "해운대 해수욕장",
+      "description": "부산 여행의 시작점으로 좋은 대표 해변입니다. 산책과 사진을 즐기기 좋습니다."
+    }
+  },
+  {
+    "image": "images/gwangalli.png",
+    "en": {
+      "tag": "Night view",
+      "title": "Gwangalli",
+      "description": "Enjoy the bridge lights, seaside cafes, and a calm night view by the water."
+    },
+    "kr": {
+      "tag": "야경",
+      "title": "광안리",
+      "description": "광안대교 야경과 바다 앞 카페를 함께 즐길 수 있는 부산의 대표 밤 코스입니다."
+    }
+  },
+  {
+    "image": "images/gamcheon.png",
+    "en": {
+      "tag": "Village",
+      "title": "Gamcheon Culture Village",
+      "description": "Colorful houses, narrow alleys, and photo-friendly corners make this route memorable."
+    },
+    "kr": {
+      "tag": "마을",
+      "title": "감천문화마을",
+      "description": "알록달록한 집과 골목길이 어우러진 부산의 대표 포토 스팟입니다."
+    }
+  }
+]

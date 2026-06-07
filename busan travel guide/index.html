@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BUSAN Travel Guide</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#home" class="nav__logo" aria-label="Busan Travel Home"><span>TRAVEL</span><i></i></a>
+      <button class="nav__toggle" id="menuToggle" type="button" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
+      <ul class="nav__menu" id="navMenu">
+        <li><a href="#home" data-i18n="navHome">Home</a></li>
+        <li><a href="#about" data-i18n="navAbout">About Busan</a></li>
+        <li><a href="#tours" data-i18n="navTours">Tours</a></li>
+        <li><a href="#planner" data-i18n="navPlanner">Planner</a></li>
+      </ul>
+      <div class="nav__actions">
+        <button class="mode-btn" id="langToggle" type="button">EN / KR</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-labelledby="mainTitle">
+      <div class="hero__bg"></div><div class="hero__overlay"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow" data-i18n="heroEyebrow">South Korea’s ocean city</p>
+        <h1 id="mainTitle">BUSAN</h1>
+        <p class="hero__copy" data-i18n="heroCopy">Beaches, night views, markets, and slow coastal walks. Make your first Busan trip simple and memorable.</p>
+        <div class="hero__buttons"><a class="btn btn--outline" href="#tours" data-i18n="watchTour">Watch tour</a><a class="btn btn--solid" href="#planner" data-i18n="makePlan">Make my route</a></div>
+      </div>
+      <div class="hero__side"><span data-i18n="learnMore">Learn more</span><i></i></div>
+      <ul class="hero__social" aria-label="Social media links"><li><a href="#" aria-label="YouTube">▶</a></li><li><a href="#" aria-label="Instagram">◎</a></li><li><a href="#" aria-label="Twitter">t</a></li></ul>
+    </section>
+
+    <section class="section intro" id="about" aria-labelledby="aboutTitle">
+      <div class="section__head"><p class="section__label" data-i18n="aboutLabel">About Busan</p><h2 id="aboutTitle" data-i18n="aboutTitle">A city where the sea meets everyday life.</h2></div>
+      <div class="intro__grid">
+        <article class="intro-card intro-card--wide intro-card--ocean">
+          <div class="intro-card__content">
+            <h3 data-i18n="introTitle1">Ocean view</h3>
+            <p data-i18n="introDesc1">Haeundae and Gwangalli are easy places to start your Busan trip.</p>
+          </div>
+        </article>
+        <article class="intro-card intro-card--food">
+          <div class="intro-card__content">
+            <h3 data-i18n="introTitle2">Local food</h3>
+            <p data-i18n="introDesc2">Try fish cake, milmyeon, seafood, and market snacks.</p>
+          </div>
+        </article>
+        <article class="intro-card intro-card--photo">
+          <div class="intro-card__content">
+            <h3 data-i18n="introTitle3">Photo spots</h3>
+            <p data-i18n="introDesc3">Find colorful streets, bridges, temples, and night views.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section tours" id="tours" aria-labelledby="tourTitle">
+      <div class="section__head section__head--row"><div><p class="section__label" data-i18n="tourLabel">Recommended tours</p><h2 id="tourTitle" data-i18n="tourTitle">Pick your Busan mood</h2></div><div class="tour-controls"><button class="small-btn" id="startAuto" type="button" data-i18n="autoPlay">Auto play</button><button class="small-btn" id="stopAuto" type="button" data-i18n="stop">Stop</button></div></div>
+      <p class="status" id="status" aria-live="polite"></p><div class="tour-grid" id="tourGrid"></div>
+    </section>
+
+    <section class="section planner" id="planner" aria-labelledby="plannerTitle">
+      <div class="planner__text"><p class="section__label" data-i18n="plannerLabel">Trip planner</p><h2 id="plannerTitle" data-i18n="plannerTitle">Build a simple one-day Busan route.</h2><p data-i18n="plannerCopy">Choose a travel mood and get a short course recommendation. This form also includes validation for the project checklist.</p></div>
+      <form class="plan-form" id="planForm" novalidate>
+        <div class="form-field"><label for="travelerName" data-i18n="nameLabel">Name</label><input id="travelerName" name="travelerName" type="text" placeholder="Your name" required /></div>
+        <div class="form-field"><label for="mood" data-i18n="moodLabel">Travel mood</label><select id="mood" name="mood" required><option value="" data-i18n="selectMood">Select one</option><option value="ocean" data-i18n="moodOcean">Ocean view</option><option value="food" data-i18n="moodFood">Food & market</option><option value="photo" data-i18n="moodPhoto">Photo spots</option></select></div>
+        <button class="btn btn--solid" type="submit" data-i18n="submit">Recommend route</button><p class="form-message" id="formMessage" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <footer class="footer"><p>BUSAN TRAVEL GUIDE</p><a href="#home" data-i18n="backTop">Back to top</a></footer>
+  <script src="script.js"></script>
+</body>
+</html>
